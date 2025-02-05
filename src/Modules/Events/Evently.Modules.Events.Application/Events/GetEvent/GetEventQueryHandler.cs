@@ -2,6 +2,7 @@
 using Evently.Modules.Events.Application.Abstractions.Data;
 using System.Data.Common;
 using Dapper;
+using System.Diagnostics;
 
 namespace Evently.Modules.Events.Application.Events.GetEvent;
 
@@ -24,7 +25,8 @@ internal sealed class GetEventQueryHandler(IDbConnectionFactory dbConnectionFact
              WHERE id = @EventId
              """;
 
-        EventResponse @event = await connection.QuerySingleOrDefaultAsync(sql, request);
+
+        EventResponse @event = await connection.QuerySingleOrDefaultAsync<EventResponse>(sql, request);
         return @event;
     }
 }
