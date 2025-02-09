@@ -1,4 +1,5 @@
-﻿using Evently.Modules.Events.Domain.Abstractions;
+﻿using Evently.Common.Application.Messaging;
+using Evently.Common.Domain;
 using MediatR;
 
 namespace Evently.Modules.Events.Application.Abstractions.Messaging;

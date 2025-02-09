@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using Evently.Modules.Events.Application.Abstractions.Data;
 using System.Data.Common;
 using Dapper;
-using System.Diagnostics;
+using Evently.Common.Application.Data;
 
 namespace Evently.Modules.Events.Application.Events.GetEvent;
 

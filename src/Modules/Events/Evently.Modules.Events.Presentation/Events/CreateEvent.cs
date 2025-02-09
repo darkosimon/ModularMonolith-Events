@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using MediatR;
 using Evently.Modules.Events.Application.Events.CreateEvent;
-using Evently.Modules.Events.Domain.Abstractions;
 using Evently.Modules.Events.Presentation.ApiResults;
+using Evently.Common.Domain;
 
 namespace Evently.Modules.Events.Presentation.Events;
 internal static class CreateEvent

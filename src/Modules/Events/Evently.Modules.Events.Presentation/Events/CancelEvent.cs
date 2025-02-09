@@ -1,10 +1,10 @@
-﻿using Evently.Modules.Events.Domain.Abstractions;
-using Evently.Modules.Events.Presentation.ApiResults;
+﻿using Evently.Modules.Events.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
 using Evently.Modules.Events.Application.Events.CancelEvent;
+using Evently.Common.Domain;
 
 namespace Evently.Modules.Events.Presentation.Events;
 internal static class CancelEvent

@@ -1,7 +1,7 @@
 ﻿using Evently.Modules.Events.Application.Abstractions.Data;
-using Evently.Modules.Events.Application.Abstractions.Messaging;
-using Evently.Modules.Events.Domain.Abstractions;
+using Evently.Common.Domain;
 using Evently.Modules.Events.Domain.Categories;
+using Evently.Common.Application.Messaging;
 
 namespace Evently.Modules.Events.Application.Categories.CreateCategory;
 internal sealed class CreateCategoryCommandHandler(ICategoryRepository categoryRepository, IUnitOfWork unitOfWork)
