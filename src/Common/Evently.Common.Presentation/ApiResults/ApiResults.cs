@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Evently.Common.Domain;
+﻿using Evently.Common.Domain;
 using Microsoft.AspNetCore.Http;
 
-namespace Evently.Modules.Events.Presentation.ApiResults;
+namespace Evently.Common.Presentation.ApiResults;
 
 public static class ApiResults
 {

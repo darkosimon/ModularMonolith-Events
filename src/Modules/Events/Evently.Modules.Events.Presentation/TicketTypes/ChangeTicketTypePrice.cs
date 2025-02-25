@@ -1,21 +1,22 @@
 ﻿using Evently.Common.Domain;
 using Evently.Modules.Events.Application.TicketTypes.UpdateTicketTypePrice;
-using Evently.Modules.Events.Presentation.ApiResults;
+using Evently.Common.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Evently.Common.Presentation.Endpoints;
 
 namespace Evently.Modules.Events.Presentation.TicketTypes;
-internal static class ChangeTicketTypePrice
+internal sealed class ChangeTicketTypePrice : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPut("ticket-types/{id}/price", async (Guid id, Request request, ISender sender) =>
         {
             Result result = await sender.Send(new UpdateTicketTypePriceCommand(id, request.Price));
 
-            return result.Match(Results.NoContent, ApiResults.ApiResults.Problem);
+            return result.Match(Results.NoContent, ApiResults.Problem);
         })
             .WithTags(Tags.TicketTypes);
     }

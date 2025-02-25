@@ -1,4 +1,5 @@
-﻿using Evently.Modules.Events.Application.Abstractions.Data;
+﻿using Evently.Common.Presentation.Endpoints;
+using Evently.Modules.Events.Application.Abstractions.Data;
 using Evently.Modules.Events.Domain.Categories;
 using Evently.Modules.Events.Domain.Events;
 using Evently.Modules.Events.Domain.TicketTypes;
@@ -18,15 +19,9 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Evently.Modules.Events.Infrastructure;
 public static class EventsModule
 {
-    public static void MapEndpoints(IEndpointRouteBuilder app)
-    {
-        TicketTypeEndpoints.MapEndpoints(app);
-        CategoryEndpoints.MapEndpoints(app);
-        EventEndpoints.MapEndpoints(app);
-    }
-
     public static IServiceCollection AddEventModule(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddEndpoints(Presentation.AssemblyReference.Assembly);
         services.AddInfrastracture(configuration);
 
         return services;

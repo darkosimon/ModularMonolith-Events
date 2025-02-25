@@ -1,24 +1,25 @@
 ﻿using Evently.Modules.Events.Application.Categories.GetCategories;
 using Evently.Modules.Events.Application.Categories.GetCategory;
 using Evently.Common.Domain;
-using Evently.Modules.Events.Presentation.ApiResults;
+using Evently.Common.Presentation.ApiResults;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Evently.Common.Application.Caching;
+using Evently.Common.Presentation.Endpoints;
 
 namespace Evently.Modules.Events.Presentation.Categories;
 
-internal static class GetCategories
+internal sealed class GetCategories : IEndpoint
 {
-    public static void MapEndpoint(IEndpointRouteBuilder app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("categories", async ( ISender sender, ICacheService cacheService, CancellationToken cancellationToken) =>
+        app.MapGet("categories", async (ISender sender, ICacheService cacheService, CancellationToken cancellationToken) =>
         {
-           IReadOnlyCollection<CategoryResponse> categoryReponse = await cacheService.GetAsync<IReadOnlyCollection<CategoryResponse>>("categories", cancellationToken);
+            IReadOnlyCollection<CategoryResponse> categoryReponse = await cacheService.GetAsync<IReadOnlyCollection<CategoryResponse>>("categories", cancellationToken);
 
-            if(categoryReponse is not null)
+            if (categoryReponse is not null)
             {
                 return Results.Ok(categoryReponse);
             }
@@ -30,7 +31,7 @@ internal static class GetCategories
                 await cacheService.SetAsync("categories", result.Value, cancellationToken: cancellationToken);
             }
 
-            return result.Match(Results.Ok, ApiResults.ApiResults.Problem);
+            return result.Match(Results.Ok, ApiResults.Problem);
         })
         .WithTags(Tags.Categories);
     }
