@@ -2,6 +2,7 @@
 using Evently.Common.Application.Clock;
 using Evently.Common.Application.Data;
 using Evently.Common.Infrastructure.Caching;
+using Evently.Common.Infrastructure.Interceptors;
 using Evently.Modules.Events.Infrastructure.Clock;
 using Evently.Modules.Events.Infrastructure.Data;
 using Microsoft.Extensions.Caching.Distributed;
@@ -20,7 +21,9 @@ public static class InfrastructureConfiguration
         services.TryAddSingleton(npgsqlDataSource);
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
-        
+
+        services.TryAddSingleton<PublishDomainEventsInterceptor>();
+
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
