@@ -49,6 +49,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Users.Infra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Users.Presentation", "src\Modules\Users\Evently.Modules.Users.Presentation\Evently.Modules.Users.Presentation.csproj", "{6E0D2E96-B0ED-4DD8-9074-6B855EBDFB90}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ticketing", "Ticketing", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Ticketing.Application", "src\Modules\Ticketing\Evently.Modules.Ticketing.Application\Evently.Modules.Ticketing.Application.csproj", "{D8D2D953-6152-434B-8E97-A284E9E9362D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Ticketing.Domain", "src\Modules\Ticketing\Evently.Modules.Ticketing.Domain\Evently.Modules.Ticketing.Domain.csproj", "{78626A57-7792-4B1D-9B55-0B277C045251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Ticketing.Presentation", "src\Modules\Ticketing\Evently.Modules.Ticketing.Presentation\Evently.Modules.Ticketing.Presentation.csproj", "{DD090E4E-81C3-4FB4-828B-D62A68ADDF7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Ticketing.Infrastructure", "src\Modules\Ticketing\Evently.Modules.Ticketing.Infrastructure\Evently.Modules.Ticketing.Infrastructure.csproj", "{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +121,22 @@ Global
 		{6E0D2E96-B0ED-4DD8-9074-6B855EBDFB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E0D2E96-B0ED-4DD8-9074-6B855EBDFB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E0D2E96-B0ED-4DD8-9074-6B855EBDFB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D2D953-6152-434B-8E97-A284E9E9362D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D2D953-6152-434B-8E97-A284E9E9362D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D2D953-6152-434B-8E97-A284E9E9362D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D2D953-6152-434B-8E97-A284E9E9362D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78626A57-7792-4B1D-9B55-0B277C045251}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78626A57-7792-4B1D-9B55-0B277C045251}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78626A57-7792-4B1D-9B55-0B277C045251}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78626A57-7792-4B1D-9B55-0B277C045251}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD090E4E-81C3-4FB4-828B-D62A68ADDF7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD090E4E-81C3-4FB4-828B-D62A68ADDF7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD090E4E-81C3-4FB4-828B-D62A68ADDF7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD090E4E-81C3-4FB4-828B-D62A68ADDF7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -134,5 +160,13 @@ Global
 		{BE19F23A-68CD-4390-8B1B-0928DB8E7973} = {A5F5CBD1-66EF-4D34-BB0D-B334B6B7394F}
 		{058E86D2-E901-4FA8-9A0A-F3AA159A1859} = {A5F5CBD1-66EF-4D34-BB0D-B334B6B7394F}
 		{6E0D2E96-B0ED-4DD8-9074-6B855EBDFB90} = {A5F5CBD1-66EF-4D34-BB0D-B334B6B7394F}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {0D760F37-9A9E-4B57-A202-41F43D4CC488}
+		{D8D2D953-6152-434B-8E97-A284E9E9362D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{78626A57-7792-4B1D-9B55-0B277C045251} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{DD090E4E-81C3-4FB4-828B-D62A68ADDF7E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8D2A77D-C646-4D2B-9E87-4427BDEA164E}
 	EndGlobalSection
 EndGlobal
