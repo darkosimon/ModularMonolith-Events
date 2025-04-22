@@ -21,12 +21,16 @@ internal sealed class AddItemToCardCommandValidator : AbstractValidator<AddItemT
     }
 }
 
-internal sealed class AddItemToCardCommandHandler(CartService cartService, IUsersApi usersApi, IEventsApi eventsApi) : ICommandHandler<AddItemToCardCommand>
+internal sealed class AddItemToCardCommandHandler(
+    CartService cartService,
+    //IUsersApi usersApi,
+    ICustomerRepository customerRepository,
+    IEventsApi eventsApi) : ICommandHandler<AddItemToCardCommand>
 {
     public async Task<Result> Handle(AddItemToCardCommand request, CancellationToken cancellationToken)
     {
         //1) Get Customer
-        UserResponse? customer = await usersApi.GetAsync(request.CustomerId, cancellationToken);
+        Customer? customer = await customerRepository.GetAsync(request.CustomerId, cancellationToken);
 
         if (customer is null)
         {

@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Users.Publi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.PublicApi", "src\Modules\Events\Evently.Modules.Events.PublicApi\Evently.Modules.Events.PublicApi.csproj", "{81C07CC9-98B6-40E2-9885-99194B12CC78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Ticketing.PublicApi", "src\Modules\Ticketing\Evently.Modules.Ticketing.PublicApi\Evently.Modules.Ticketing.PublicApi.csproj", "{36167E57-E6AE-4132-9B46-E3D670523052}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +151,10 @@ Global
 		{81C07CC9-98B6-40E2-9885-99194B12CC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C07CC9-98B6-40E2-9885-99194B12CC78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C07CC9-98B6-40E2-9885-99194B12CC78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36167E57-E6AE-4132-9B46-E3D670523052}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36167E57-E6AE-4132-9B46-E3D670523052}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36167E57-E6AE-4132-9B46-E3D670523052}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36167E57-E6AE-4132-9B46-E3D670523052}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -179,6 +185,7 @@ Global
 		{C6B13A1A-5B40-47D7-AA11-326C2F21F3CC} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{1723271E-2428-44A5-BA80-6EE1F695CF62} = {A5F5CBD1-66EF-4D34-BB0D-B334B6B7394F}
 		{81C07CC9-98B6-40E2-9885-99194B12CC78} = {D1F5B5AA-1DBC-4B52-BD14-F65F11B5268F}
+		{36167E57-E6AE-4132-9B46-E3D670523052} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8D2A77D-C646-4D2B-9E87-4427BDEA164E}
