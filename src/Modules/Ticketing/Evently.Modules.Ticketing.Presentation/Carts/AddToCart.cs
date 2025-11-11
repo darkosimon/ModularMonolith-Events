@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 
-namespace Evently.Modules.Ticketing.Presentation.Cart;
+namespace Evently.Modules.Ticketing.Presentation.Carts;
 internal sealed class AddToCart : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
