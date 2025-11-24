@@ -18,6 +18,7 @@ public sealed class TicketingDbContext(DbContextOptions<TicketingDbContext> opti
     : DbContext(options), IUnitOfWork
 {
     internal DbSet<Customer> Customers { get; set; }
+    
     internal DbSet<Event> Events { get; set; }
 
     internal DbSet<TicketType> TicketTypes { get; set; }
