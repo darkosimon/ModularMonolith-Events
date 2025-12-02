@@ -36,7 +36,8 @@ builder.Configuration.AddModuleConfiguration(["events", "users", "ticketing"]);
 
 builder.Services.AddHealthChecks()
     .AddNpgSql(databaseConnectionString)
-    .AddRedis(redisConnectionString);
+    .AddRedis(redisConnectionString)
+    .AddUrlGroup(new Uri(builder.Configuration.GetValue<string>("KeyCloak:HealthUrl")!),HttpMethod.Get, "keycloak");
 
 
 /***** ADD MODULES *****/
@@ -65,6 +66,10 @@ app.MapHealthChecks("health", new HealthCheckOptions
 app.UseSerilogRequestLogging();
 
 app.UseExceptionHandler();
+
+app.UseAuthentication();
+
+app.UseAuthorization(); //must be after UseAuthentication
 
 app.Run();
 
