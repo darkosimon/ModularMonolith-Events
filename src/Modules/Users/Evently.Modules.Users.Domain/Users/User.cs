@@ -15,7 +15,9 @@ public sealed class User : Entity
 
     public string LastName { get; private set; }
 
-    public static User Create(string email, string firstName, string lastName)
+    public string IdentityId { get; set; }
+
+    public static User Create(string email, string firstName, string lastName, string identityId)
     {
         var user = new User
         {
@@ -23,6 +25,7 @@ public sealed class User : Entity
             Email = email,
             FirstName = firstName,
             LastName = lastName,
+            IdentityId = identityId
         };
 
         user.Raise(new UserRegisteredDomainEvent(user.Id));
