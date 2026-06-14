@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 using Dapper;
 using Evently.Common.Application.Data;
+using Evently.Common.Application.Messaging;
 using Evently.Common.Domain;
-using Evently.Modules.Events.Application.Abstractions.Messaging;
 using Evently.Modules.Ticketing.Domain.Tickets;
 
 namespace Evently.Modules.Ticketing.Application.Tickets.GetTicket;

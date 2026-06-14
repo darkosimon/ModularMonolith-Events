@@ -1,18 +1,16 @@
 ﻿
 using Evently.Common.Application.Messaging;
 using Evently.Common.Domain;
-using Evently.Modules.Events.PublicApi;
 using Evently.Modules.Ticketing.Domain.Customers;
 using Evently.Modules.Ticketing.Domain.Events;
 using FluentValidation;
-using MediatR;
 
 namespace Evently.Modules.Ticketing.Application.Carts.AddItemToCart;
-public sealed record AddItemToCardCommand(Guid CustomerId, Guid TicketTypeId, decimal Quantity) : ICommand;
+public sealed record AddItemToCartCommand(Guid CustomerId, Guid TicketTypeId, decimal Quantity) : ICommand;
 
-internal sealed class AddItemToCardCommandValidator : AbstractValidator<AddItemToCardCommand>
+internal sealed class AddItemToCartCommandValidator : AbstractValidator<AddItemToCartCommand>
 {
-    public AddItemToCardCommandValidator()
+    public AddItemToCartCommandValidator()
     {
         RuleFor(c => c.CustomerId).NotEmpty();
         RuleFor(c => c.TicketTypeId).NotEmpty();
@@ -20,15 +18,13 @@ internal sealed class AddItemToCardCommandValidator : AbstractValidator<AddItemT
     }
 }
 
-internal sealed class AddItemToCardCommandHandler(
+internal sealed class AddItemToCartCommandHandler(
     CartService cartService,
-    //IUsersApi usersApi,
     ICustomerRepository customerRepository,
-    IEventsApi eventsApi) : ICommandHandler<AddItemToCardCommand>
+    ITicketTypeRepository ticketTypeRepository) : ICommandHandler<AddItemToCartCommand>
 {
-    public async Task<Result> Handle(AddItemToCardCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(AddItemToCartCommand request, CancellationToken cancellationToken)
     {
-        //1) Get Customer
         Customer? customer = await customerRepository.GetAsync(request.CustomerId, cancellationToken);
 
         if (customer is null)
@@ -36,24 +32,27 @@ internal sealed class AddItemToCardCommandHandler(
             return Result.Failure(CustomerErrors.NotFound(request.CustomerId));
         }
 
-        //2) Get TicketTpe
-        TicketTypeResponse? ticketType = await eventsApi.GetTicketTypeAsync(request.TicketTypeId, cancellationToken);
+        TicketType? ticketType = await ticketTypeRepository.GetAsync(request.TicketTypeId, cancellationToken);
 
         if (ticketType is null)
         {
             return Result.Failure(TicketTypeErrors.NotFound(request.TicketTypeId));
         }
 
-        //3) Add item to cart
+        if (ticketType.AvailableQuantity < request.Quantity)
+        {
+            return Result.Failure(TicketTypeErrors.NotEnoughQuantity(ticketType.AvailableQuantity));
+        }
+
         var cartItem = new CartItem
         {
-            TicketTypeId = ticketType.Id,
-            Price = ticketType.Price,
+            TicketTypeId = request.TicketTypeId,
             Quantity = request.Quantity,
-            Currency = ticketType.Currency,
+            Price = ticketType.Price,
+            Currency = ticketType.Currency
         };
 
-        await cartService.AddItemAsync(customer.Id, cartItem, cancellationToken);
+        await cartService.AddItemAsync(request.CustomerId, cartItem, cancellationToken);
 
         return Result.Success();
     }

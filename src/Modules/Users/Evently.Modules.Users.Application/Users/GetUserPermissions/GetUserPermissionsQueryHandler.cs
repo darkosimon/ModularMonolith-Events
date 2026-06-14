@@ -2,8 +2,8 @@
 using Dapper;
 using Evently.Common.Application.Authorization;
 using Evently.Common.Application.Data;
+using Evently.Common.Application.Messaging;
 using Evently.Common.Domain;
-using Evently.Modules.Events.Application.Abstractions.Messaging;
 using Evently.Modules.Users.Domain.Users;
 
 namespace Evently.Modules.Users.Application.Users.GetUserPermissions;

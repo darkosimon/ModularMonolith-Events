@@ -1,6 +1,5 @@
-﻿using Evently.Common.Application.Messaging;
-using Evently.Common.Domain;
+﻿using Evently.Common.Domain;
 using MediatR;
 
-namespace Evently.Modules.Events.Application.Abstractions.Messaging;
+namespace Evently.Common.Application.Messaging;
 public interface IQueryHandler<in TQuery, TResponse> : IRequestHandler<TQuery, Result<TResponse>> where TQuery : IQuery<TResponse>;
