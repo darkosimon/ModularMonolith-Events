@@ -79,6 +79,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Events.Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Ticketing.IntegrationEvents", "src\Modules\Ticketing\Evently.Modules.Ticketing.IntegrationEvents\Evently.Modules.Ticketing.IntegrationEvents.csproj", "{01C436B4-4429-4813-831D-5CEF02A972EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FFC69E79-231C-48E9-BF9A-BC0A2656DFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.AtchitctureTests", "..\Evently.AtchitctureTests\Evently.AtchitctureTests.csproj", "{C4F32BE2-337B-4B47-A0EE-6C08A06D6D08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CC18BD72-D814-493E-B371-4A8F71CB51FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evently.Modules.Users.ArchitectureTests", "..\Evently.Modules.Users.ArchitectureTests\Evently.Modules.Users.ArchitectureTests.csproj", "{1CE54609-E6F5-4132-A12E-135E0B3DFF39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -193,6 +201,14 @@ Global
 		{01C436B4-4429-4813-831D-5CEF02A972EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C436B4-4429-4813-831D-5CEF02A972EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C436B4-4429-4813-831D-5CEF02A972EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4F32BE2-337B-4B47-A0EE-6C08A06D6D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F32BE2-337B-4B47-A0EE-6C08A06D6D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F32BE2-337B-4B47-A0EE-6C08A06D6D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F32BE2-337B-4B47-A0EE-6C08A06D6D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE54609-E6F5-4132-A12E-135E0B3DFF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CE54609-E6F5-4132-A12E-135E0B3DFF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CE54609-E6F5-4132-A12E-135E0B3DFF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CE54609-E6F5-4132-A12E-135E0B3DFF39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,6 +247,9 @@ Global
 		{4010F10A-9D12-4F5F-85E4-930EAF7314BF} = {CD57F032-C268-43CB-BC4D-50F96D3882B6}
 		{CECEA689-456B-47A3-91FF-12641B516909} = {D1F5B5AA-1DBC-4B52-BD14-F65F11B5268F}
 		{01C436B4-4429-4813-831D-5CEF02A972EE} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{C4F32BE2-337B-4B47-A0EE-6C08A06D6D08} = {FFC69E79-231C-48E9-BF9A-BC0A2656DFB4}
+		{CC18BD72-D814-493E-B371-4A8F71CB51FD} = {A5F5CBD1-66EF-4D34-BB0D-B334B6B7394F}
+		{1CE54609-E6F5-4132-A12E-135E0B3DFF39} = {CC18BD72-D814-493E-B371-4A8F71CB51FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A8D2A77D-C646-4D2B-9E87-4427BDEA164E}

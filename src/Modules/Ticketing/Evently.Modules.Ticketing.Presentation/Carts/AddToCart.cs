@@ -15,7 +15,7 @@ internal sealed class AddToCart : IEndpoint
         app.MapPut("carts/add", async (Request request, ISender sender) =>
         {
             Result result = await sender.Send(
-                new AddItemToCardCommand(
+                new AddItemToCartCommand(
                     request.CustomerId,
                     request.TicketTypeId,
                     request.Quantity));

@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 using Dapper;
 using Evently.Common.Application.Data;
+using Evently.Common.Application.Messaging;
 using Evently.Common.Domain;
-using Evently.Modules.Events.Application.Abstractions.Messaging;
 
 namespace Evently.Modules.Ticketing.Application.Orders.GetOrders;
 internal sealed class GetOrdersQueryHandler(IDbConnectionFactory dbConnectionFactory)
