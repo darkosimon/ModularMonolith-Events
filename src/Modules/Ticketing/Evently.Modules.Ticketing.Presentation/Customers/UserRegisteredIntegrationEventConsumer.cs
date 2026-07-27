@@ -13,7 +13,7 @@ public sealed class UserRegisteredIntegrationEventConsumer(ISender sender) : ICo
     {
         Result result = await sender.Send(
              new CreateCustomerCommand(
-                 context.Message.UserID,
+                 context.Message.UserId,
                  context.Message.Email,
                  context.Message.FirstName,
                  context.Message.LastName));

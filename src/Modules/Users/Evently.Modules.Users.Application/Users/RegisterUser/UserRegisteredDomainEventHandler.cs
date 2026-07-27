@@ -23,7 +23,7 @@ internal sealed class UserRegisteredDomainEventHandler(ISender sender, IEventBus
         await eventBus.PublishAsync(
             new UserRegisteredIntegrationEvent(
                 notification.Id,
-                notification.OccuredOnUtc,
+                notification.OccurredOnUtc,
             result.Value.Id,
             result.Value.Email,
             result.Value.FirstName,
