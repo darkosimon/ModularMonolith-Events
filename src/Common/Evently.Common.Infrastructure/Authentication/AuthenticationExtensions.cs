@@ -3,7 +3,7 @@
 namespace Evently.Common.Infrastructure.Authentication;
 internal static class AuthenticationExtensions
 {
-    internal static IServiceCollection AddAuthenticationInernal(this IServiceCollection services)
+    internal static IServiceCollection AddAuthenticationInternal(this IServiceCollection services)
     {
         services.AddAuthorization();
 

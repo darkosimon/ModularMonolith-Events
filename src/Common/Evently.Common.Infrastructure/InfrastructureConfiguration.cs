@@ -1,17 +1,20 @@
-﻿using Evently.Common.Application.Caching;
+﻿using Dapper;
+using Evently.Common.Application.Caching;
 using Evently.Common.Application.Clock;
 using Evently.Common.Application.Data;
 using Evently.Common.Application.EventBus;
 using Evently.Common.Infrastructure.Authentication;
 using Evently.Common.Infrastructure.Authorization;
 using Evently.Common.Infrastructure.Caching;
-using Evently.Common.Infrastructure.Interceptors;
+using Evently.Common.Infrastructure.Data;
+using Evently.Common.Infrastructure.Outbox;
 using Evently.Modules.Events.Infrastructure.Clock;
 using Evently.Modules.Events.Infrastructure.Data;
 using MassTransit;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
+using Quartz;
 using StackExchange.Redis;
 
 namespace Evently.Common.Infrastructure;
@@ -24,7 +27,7 @@ public static class InfrastructureConfiguration
         string dbConnectionString,
         string redisConnectionString)
     {
-        services.AddAuthenticationInernal();
+        services.AddAuthenticationInternal();
 
         services.AddAuthorizationInternal();
 
@@ -33,9 +36,14 @@ public static class InfrastructureConfiguration
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 
-        services.TryAddSingleton<PublishDomainEventsInterceptor>();
+        SqlMapper.AddTypeHandler(new GenericArrayHandler<string>());
+
+        services.TryAddSingleton<InsertOutboxMessagesInterceptor>();
 
         services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
+
+        services.AddQuartz();
+        services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
 
         try
         {

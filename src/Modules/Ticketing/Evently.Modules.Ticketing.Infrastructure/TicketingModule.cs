@@ -1,6 +1,7 @@
-﻿using Evently.Common.Infrastructure.Interceptors;
+﻿using Evently.Common.Infrastructure.Outbox;
 using Evently.Common.Presentation.Endpoints;
 using Evently.Modules.Attendance.Presentation.Events;
+using Evently.Modules.Ticketing.Application.Abstractions.Authentication;
 using Evently.Modules.Ticketing.Application.Abstractions.Data;
 using Evently.Modules.Ticketing.Application.Abstractions.Payment;
 using Evently.Modules.Ticketing.Application.Carts;
@@ -9,10 +10,12 @@ using Evently.Modules.Ticketing.Domain.Events;
 using Evently.Modules.Ticketing.Domain.Orders;
 using Evently.Modules.Ticketing.Domain.Payments;
 using Evently.Modules.Ticketing.Domain.Tickets;
+using Evently.Modules.Ticketing.Infrastructure.Authentication;
 using Evently.Modules.Ticketing.Infrastructure.Customers;
 using Evently.Modules.Ticketing.Infrastructure.Database;
 using Evently.Modules.Ticketing.Infrastructure.Events;
 using Evently.Modules.Ticketing.Infrastructure.Orders;
+using Evently.Modules.Ticketing.Infrastructure.Outbox;
 using Evently.Modules.Ticketing.Infrastructure.Payments;
 using Evently.Modules.Ticketing.Infrastructure.Tickets;
 using Evently.Modules.Ticketing.Presentation.Customers;
@@ -54,7 +57,7 @@ public static  class TicketingModule
                     configuration.GetConnectionString("Database"),
                     npgsqlOptions => npgsqlOptions
                         .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Ticketing))
-                .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>())
+                .AddInterceptors(sp.GetRequiredService<InsertOutboxMessagesInterceptor>())
                 .UseSnakeCaseNamingConvention());
 
         services.AddScoped<ICustomerRepository, CustomerRepository>();
@@ -69,5 +72,9 @@ public static  class TicketingModule
         services.AddSingleton<CartService>();
         services.AddSingleton<IPaymentService, PaymentService>();
 
+        services.AddScoped<ICustomerContext, CustomerContext>();
+
+        services.Configure<OutboxOptions>(configuration.GetSection("Ticketing:Outbox"));
+        services.ConfigureOptions<ConfigureProcessOutboxJob>();
     }
 }
